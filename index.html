@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Mateo Morales — Analista de Datos Junior</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#FFFFFF;--bg2:#F7F8FA;--navy:#0A3D62;--blue:#1A6FA8;--ink:#1C1C1E;
+  --muted:#6E6E73;--border:#E5E8ED;--accent:#E8F2FA;--white:#fff;
+  --fs-xs:.75rem;--fs-sm:.875rem;--fs-base:1rem;--fs-lg:1.125rem;--fs-xl:1.375rem;--fs-2xl:1.75rem;--fs-3xl:2.25rem;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1117;--bg2:#161B22;--navy:#4A9FD4;--blue:#7BBFE8;--ink:#E6EDF3;
+  --muted:#8B949E;--border:#30363D;--accent:#1C2A36;--white:#161B22;
+}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:var(--fs-base)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:52px}
+.nav-brand{font-family:'Sora',sans-serif;font-weight:700;font-size:.9rem;color:var(--navy);letter-spacing:-.02em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--navy)}
+
+/* HERO */
+.hero{max-width:780px;margin:0 auto;padding:5rem 2rem 4rem}
+.hero-eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.05em;color:var(--blue);margin-bottom:1.2rem}
+.hero h1{font-family:'Sora',sans-serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;
+  line-height:1.15;color:var(--ink);margin-bottom:1.2rem;max-width:640px}
+.hero-bio{font-size:var(--fs-lg);color:var(--muted);max-width:580px;line-height:1.75;margin-bottom:2rem}
+.hero-stat-row{display:flex;gap:2.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column}
+.stat-num{font-family:'Sora',sans-serif;font-size:1.6rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-label{font-size:.75rem;color:var(--muted);margin-top:.3rem}
+.skills-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.skill{background:var(--accent);color:var(--navy);font-size:.75rem;font-weight:600;
+  padding:.3rem .75rem;border-radius:4px;border:1px solid var(--border)}
+.cta-row{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.25rem;border-radius:6px;
+  font-size:.85rem;font-weight:600;text-decoration:none;transition:opacity .15s;font-family:'Inter',sans-serif}
+.btn:hover{opacity:.82}
+.btn-solid{background:var(--navy);color:#fff}
+.btn-ghost{border:1.5px solid var(--border);color:var(--navy);background:transparent}
+
+/* SECTION */
+section{max-width:780px;margin:0 auto;padding:4rem 2rem}
+.sec-label{font-size:.72rem;font-weight:600;letter-spacing:.06em;color:var(--blue);margin-bottom:.6rem}
+.sec-title{font-family:'Sora',sans-serif;font-size:var(--fs-2xl);font-weight:700;color:var(--ink);margin-bottom:2rem;
+  padding-bottom:.75rem;border-bottom:2px solid var(--navy)}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:780px;margin:0 auto}
+
+/* PROJECTS */
+.project{margin-bottom:3.5rem}
+.proj-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.5rem;flex-wrap:wrap}
+.proj-num{font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;color:var(--blue);letter-spacing:.08em}
+.proj-tools{display:flex;gap:.4rem;flex-wrap:wrap}
+.tool{font-size:.7rem;font-weight:500;border:1px solid var(--border);
+  border-radius:3px;padding:.15rem .5rem;color:var(--muted);background:var(--bg2)}
+.proj-title{font-family:'Sora',sans-serif;font-size:var(--fs-xl);font-weight:700;color:var(--ink);
+  margin-bottom:1.25rem;line-height:1.3}
+.block{margin-bottom:1rem}
+.block-label{font-size:.7rem;font-weight:600;letter-spacing:.08em;color:var(--navy);margin-bottom:.25rem}
+.block p,.block-p{font-size:.93rem;color:var(--muted);line-height:1.7}
+
+/* FUNNEL VISUAL */
+.funnel-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:8px;
+  padding:1.5rem;margin:1.25rem 0}
+.funnel-title{font-size:.72rem;font-weight:600;letter-spacing:.06em;color:var(--navy);margin-bottom:1rem}
+.funnel-step{display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem}
+.funnel-bar-wrap{flex:1;height:28px;background:var(--border);border-radius:3px;overflow:hidden;position:relative}
+.funnel-bar{height:100%;border-radius:3px;display:flex;align-items:center;padding:0 .6rem;transition:width .8s ease}
+.funnel-bar span{font-size:.72rem;font-weight:600;color:#fff;white-space:nowrap}
+.funnel-label{width:110px;font-size:.75rem;color:var(--ink);text-align:right;flex-shrink:0}
+.funnel-pct{width:42px;font-size:.72rem;font-weight:600;color:var(--navy);text-align:right;flex-shrink:0}
+.drop-note{font-size:.72rem;color:#C0392B;font-weight:600;margin-top:.75rem;
+  background:#FEF0EF;padding:.4rem .75rem;border-radius:4px;border-left:3px solid #C0392B;display:inline-block}
+
+/* HIGHLIGHT BOX */
+.highlight{background:var(--accent);border-left:3px solid var(--navy);
+  padding:.9rem 1.1rem;border-radius:0 6px 6px 0;margin:1.1rem 0}
+.highlight .block-label{margin-bottom:.3rem}
+.highlight p{font-size:.95rem;color:var(--ink);font-weight:500}
+
+/* LATAM BARS */
+.bar-chart-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:1.25rem 0}
+.bar-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.55rem}
+.bar-city{font-size:.73rem;color:var(--ink);width:115px;text-align:right;flex-shrink:0}
+.bar-outer{flex:1;height:22px;background:var(--border);border-radius:3px;overflow:hidden}
+.bar-inner{height:100%;border-radius:3px;display:flex;align-items:center;padding-right:.5rem;justify-content:flex-end}
+.bar-inner span{font-size:.68rem;font-weight:600;color:#fff}
+.bar-legend{margin-top:.75rem;font-size:.72rem;color:var(--muted)}
+
+/* PROJ FOOTER */
+.proj-footer{margin-top:1.2rem;padding-top:.75rem;border-top:1px solid var(--border);
+  display:flex;gap:.75rem;flex-wrap:wrap}
+.proj-link{font-size:.83rem;font-weight:600;color:var(--navy);text-decoration:none;
+  border-bottom:1px solid var(--border);padding-bottom:1px;transition:border-color .15s}
+.proj-link:hover{border-color:var(--navy)}
+
+/* EXPERIENCE */
+.exp-item{margin-bottom:2rem}
+.exp-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.3rem}
+.exp-role{font-family:'Sora',sans-serif;font-weight:700;font-size:var(--fs-lg);color:var(--ink)}
+.exp-period{font-size:.82rem;color:var(--muted)}
+.exp-co{font-size:.9rem;color:var(--blue);margin-bottom:.6rem}
+.exp-list{padding-left:1rem}
+.exp-list li{font-size:.91rem;color:var(--muted);margin-bottom:.3rem}
+
+/* SKILLS GRID */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem}
+.sg-group h4{font-family:'Sora',sans-serif;font-size:.78rem;font-weight:700;color:var(--navy);
+  margin-bottom:.5rem;text-transform:none}
+.sg-group p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.in-progress{font-style:italic}
+
+/* CONTACT */
+.contact-intro{font-size:var(--fs-lg);color:var(--muted);max-width:520px;margin-bottom:1.5rem}
+.contact-row{display:flex;gap:.75rem;flex-wrap:wrap}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;
+  font-size:.78rem;color:var(--muted)}
+
+@media(max-width:600px){
+  nav{padding:0 1rem}.nav-links{gap:1.2rem}
+  .hero,section{padding-left:1.25rem;padding-right:1.25rem}
+  .hero{padding-top:3rem;padding-bottom:2.5rem}
+  .funnel-label{width:80px;font-size:.68rem}
+  .bar-city{width:85px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">Mateo Morales</span>
+  <ul class="nav-links">
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Analista de Datos Junior · Bogotá, Colombia · Disponible remoto</p>
+  <h1>Convierto datos corporativos en decisiones de negocio</h1>
+  <p class="hero-bio">Más de 7 años analizando información de nómina, costos de personal y comportamiento salarial en Alkosto S.A. me dieron algo que pocos analistas junior tienen: entiendo qué necesita ver la dirección y sé cómo presentarlo. Hoy desarrollo esa capacidad con SQL y Python.</p>
+  <div class="hero-stat-row">
+    <div class="stat"><span class="stat-num">7+</span><span class="stat-label">años en entornos corporativos</span></div>
+    <div class="stat"><span class="stat-num">2</span><span class="stat-label">proyectos con datos reales</span></div>
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">ciudades LATAM analizadas</span></div>
+    <div class="stat"><span class="stat-num">60%+</span><span class="stat-label">caída identificada en embudo</span></div>
+  </div>
+  <div class="skills-row">
+    <span class="skill">SQL</span>
+    <span class="skill">Python · Pandas · NumPy</span>
+    <span class="skill">Excel avanzado</span>
+    <span class="skill">Análisis de embudos</span>
+    <span class="skill">Retención por cohortes</span>
+    <span class="skill">People Analytics</span>
+    <span class="skill">Google Sheets</span>
+  </div>
+  <div class="cta-row">
+    <a class="btn btn-solid" href="#proyectos">Ver proyectos</a>
+    <a class="btn btn-ghost" href="https://github.com/mateom630-droid" target="_blank">GitHub</a>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/mateo-andrés-morales-mercado-225012ba" target="_blank">LinkedIn</a>
+    <a class="btn btn-ghost" href="mailto:Mateom630@gmail.com">Contacto</a>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <p class="sec-label">Portafolio</p>
+  <h2 class="sec-title">Proyectos de análisis</h2>
+
+  <!-- PROYECTO 1: MERCADOLIBRE -->
+  <div class="project">
+    <div class="proj-header">
+      <span class="proj-num">PROYECTO 01</span>
+      <div class="proj-tools">
+        <span class="tool">SQL</span>
+        <span class="tool">Análisis de embudos</span>
+        <span class="tool">Retención por cohortes</span>
+        <span class="tool">TripleTen · 2026</span>
+      </div>
+    </div>
+    <h3 class="proj-title">Análisis de conversión y retención de usuarios — MercadoLibre</h3>
+
+    <div class="block">
+      <p class="block-label">Problema de negocio</p>
+      <p class="block-p">¿En qué etapa del recorrido del usuario se pierde la mayor proporción del flujo y qué patrones de retención pueden informar estrategias de reactivación?</p>
+    </div>
+
+    <div class="block">
+      <p class="block-label">Metodología</p>
+      <p class="block-p">Limpieza e integridad de la base de datos con SQL, construcción de embudo de conversión multi-etapa y análisis de tasas de retención por cohorte. Cada paso estuvo orientado a producir un hallazgo accionable para el equipo de negocio, no solo una descripción de los datos.</p>
+    </div>
+
+    <!-- FUNNEL VISUAL -->
+    <div class="funnel-wrap">
+      <p class="funnel-title">EMBUDO DE CONVERSIÓN · RESULTADO DEL ANÁLISIS</p>
+      <div class="funnel-step">
+        <span class="funnel-label">Visitantes</span>
+        <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:100%;background:#1A6FA8"><span>100%</span></div></div>
+        <span class="funnel-pct">100%</span>
+      </div>
+      <div class="funnel-step">
+        <span class="funnel-label">Inicio registro</span>
+        <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:72%;background:#2186C4"><span>72%</span></div></div>
+        <span class="funnel-pct">72%</span>
+      </div>
+      <div class="funnel-step">
+        <span class="funnel-label">Registro completo</span>
+        <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:38%;background:#C0392B"><span>38%</span></div></div>
+        <span class="funnel-pct">38%</span>
+      </div>
+      <div class="funnel-step">
+        <span class="funnel-label">Primera compra</span>
+        <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:22%;background:#922B21"><span>22%</span></div></div>
+        <span class="funnel-pct">22%</span>
+      </div>
+      <div class="funnel-step">
+        <span class="funnel-label">Usuario activo</span>
+        <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:14%;background:#641E16"><span>14%</span></div></div>
+        <span class="funnel-pct">14%</span>
+      </div>
+      <span class="drop-note">⚠ Caída crítica en etapa de registro: pérdida superior al 60% del flujo total</span>
+    </div>
+
+    <div class="highlight">
+      <p class="block-label">Hallazgo principal</p>
+      <p>La etapa de registro concentra la mayor pérdida del embudo — una caída superior al 60% del flujo total de usuarios. Este punto crítico es donde se decide la mayor parte del potencial de conversión de la plataforma.</p>
+    </div>
+
+    <div class="block">
+      <p class="block-label">Recomendación de negocio</p>
+      <p class="block-p">Priorizar investigación de causas de abandono en la etapa de registro y diseñar estrategias de reactivación focalizadas en los primeros 7 días del ciclo del usuario, período donde el análisis de cohortes muestra mayor potencial de recuperación.</p>
+    </div>
+
+    <div class="block">
+      <p class="block-label">Valor del proyecto</p>
+      <p class="block-p">Demuestra capacidad para pasar de datos transaccionales a una recomendación accionable de negocio — no solo describir qué pasó, sino identificar dónde actuar y por qué.</p>
+    </div>
+
+    <div class="proj-footer">
+      <a class="proj-link" href="https://github.com/mateom630-droid/Proyecto-Final-Mercado-Libre" target="_blank">Ver repositorio en GitHub →</a>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <!-- PROYECTO 2: LATAM -->
+  <div class="project" style="margin-top:2.5rem">
+    <div class="proj-header">
+      <span class="proj-num">PROYECTO 02</span>
+      <div class="proj-tools">
+        <span class="tool">Python</span>
+        <span class="tool">Pandas · NumPy</span>
+        <span class="tool">Seaborn · Matplotlib</span>
+        <span class="tool">TripleTen · 2026</span>
+      </div>
+    </div>
+    <h3 class="proj-title">Movilidad urbana y productividad económica en ciudades de LATAM</h3>
+
+    <div class="block">
+      <p class="block-label">Problema de negocio</p>
+      <p class="block-p">¿Existe una relación entre los índices de congestión vehicular y el PIB per cápita en las principales ciudades de América Latina? ¿Qué ciudades presentan mayor necesidad de inversión en infraestructura de transporte?</p>
+    </div>
+
+    <div class="block">
+      <p class="block-label">Metodología</p>
+      <p class="block-p">Integración de dos fuentes externas — TomTom Traffic Index y OECD Cities — mediante Python (Pandas). Se estandarizaron columnas, se manejaron valores nulos, se normalizaron variables y se construyó un dataset cohesivo para análisis comparativo entre 6 ciudades.</p>
+    </div>
+
+    <!-- BAR CHART VISUAL -->
+    <div class="bar-chart-wrap">
+      <p class="funnel-title">ÍNDICE DE CONGESTIÓN POR CIUDAD · 2024 (valores relativos)</p>
+      <div class="bar-row">
+        <span class="bar-city">Ciudad de México</span>
+        <div class="bar-outer"><div class="bar-inner" style="width:100%;background:#0A3D62"><span>100</span></div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-city">Bogotá</span>
+        <div class="bar-outer"><div class="bar-inner" style="width:83%;background:#1A6FA8"><span>83</span></div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-city">Lima</span>
+        <div class="bar-outer"><div class="bar-inner" style="width:71%;background:#2186C4"><span>71</span></div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-city">Buenos Aires</span>
+        <div class="bar-outer"><div class="bar-inner" style="width:59%;background:#3498D8"><span>59</span></div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-city">São Paulo</span>
+        <div class="bar-outer"><div class="bar-inner" style="width:44%;background:#5DADE2"><span>44</span></div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-city">Santiago</span>
+        <div class="bar-outer"><div class="bar-inner" style="width:37%;background:#85C1E9"><span>37</span></div></div>
+      </div>
+      <p class="bar-legend">Fuente: TomTom Traffic Index 2024 · Valores normalizados sobre índice de Ciudad de México</p>
+    </div>
+
+    <div class="highlight">
+      <p class="block-label">Hallazgos principales</p>
+      <p>Ciudad de México lidera la congestión en la región. Bogotá presenta la mayor brecha entre demanda de movilidad y capacidad de infraestructura vial — señal prioritaria de necesidad de inversión. La relación entre PIB y congestión no es lineal: ciudades con mayor inversión en transporte mitigan el efecto del crecimiento económico sobre el tráfico.</p>
+    </div>
+
+    <div class="block">
+      <p class="block-label">Nota metodológica</p>
+      <p class="block-p">Los patrones identificados son correlaciones exploratorias entre variables — no implican causalidad. Las conclusiones requieren validación con datos históricos antes de usarse como base para decisiones de política pública.</p>
+    </div>
+
+    <div class="block">
+      <p class="block-label">Próximos pasos</p>
+      <p class="block-p">Incorporar visualizaciones interactivas (Power BI / Tableau) y calcular correlaciones estadísticas formales para cuantificar la relación observada.</p>
+    </div>
+
+    <div class="proj-footer">
+      <a class="proj-link" href="https://github.com/mateom630-droid/Movilidad-urbana-y-productividad-economica-en-ciudades-de-LATAM" target="_blank">Ver repositorio en GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia">
+  <p class="sec-label">Trayectoria</p>
+  <h2 class="sec-title">Experiencia profesional</h2>
+  <div class="exp-item">
+    <div class="exp-top">
+      <span class="exp-role">Analista de Nómina</span>
+      <span class="exp-period">2017 — Actualidad</span>
+    </div>
+    <p class="exp-co">Colombiana de Comercio Corbeta / Alkosto S.A. · Bogotá</p>
+    <ul class="exp-list">
+      <li>Procesamiento mensual de novedades de nómina para una planta de entre 500 y 2.000 colaboradores.</li>
+      <li>Elaboración de informes mensuales para la dirección: rotación de personal, variación salarial y costo de planta por área.</li>
+      <li>Análisis mensual de condiciones salariales del equipo de ventas para propuesta de esquemas de incentivos.</li>
+      <li>Consolidación y cruce de variables de desempeño y costo desde bases de datos en Excel avanzado.</li>
+      <li>Capacitación a nuevos integrantes del equipo en procesos y herramientas del área.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+  <p class="sec-label">Perfil técnico</p>
+  <h2 class="sec-title">Habilidades</h2>
+  <div class="skills-grid">
+    <div class="sg-group">
+      <h4>Lenguajes</h4>
+      <p>SQL<br/>Python (Pandas, NumPy)</p>
+    </div>
+    <div class="sg-group">
+      <h4>Análisis</h4>
+      <p>Embudos de conversión<br/>Retención por cohortes<br/>Limpieza de datos<br/>People Analytics</p>
+    </div>
+    <div class="sg-group">
+      <h4>Herramientas</h4>
+      <p>Excel avanzado<br/>Google Sheets<br/>Seaborn · Matplotlib</p>
+    </div>
+    <div class="sg-group">
+      <h4>En formación</h4>
+      <p class="in-progress">Power BI · Tableau<br/>Análisis estadístico<br/>Storytelling con datos</p>
+    </div>
+    <div class="sg-group">
+      <h4>Formación</h4>
+      <p>Certificación en Análisis de Datos<br/><em>TripleTen · 2026 (en curso)</em><br/><br/>Especialización en Gerencia Financiera<br/><em>Área Andina · 2022–2023</em></p>
+    </div>
+    <div class="sg-group">
+      <h4>Idiomas</h4>
+      <p>Español (nativo)<br/>Inglés B1</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <p class="sec-label">Disponible ahora</p>
+  <h2 class="sec-title">Contacto</h2>
+  <p class="contact-intro">Busco oportunidades remotas en análisis de datos, preferiblemente en Fintech o tecnología. Si tienes una vacante o quieres conversar sobre datos, escríbeme.</p>
+  <div class="contact-row">
+    <a class="btn btn-solid" href="mailto:Mateom630@gmail.com">Mateom630@gmail.com</a>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/mateo-andrés-morales-mercado-225012ba" target="_blank">LinkedIn</a>
+    <a class="btn btn-ghost" href="https://github.com/mateom630-droid" target="_blank">GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <p>Mateo Andrés Morales Mercado · Analista de Datos Junior · Bogotá, Colombia · 2026</p>
+</footer>
+
+</body>
+</html>
